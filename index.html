@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZERØ'S NAVI</title>
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --text: #d6d6d6;
+    --text-bright: #ffffff;
+    --muted: #555555;
+    --accent: #c98afd;
+    --accent-dim: #7a5a99;
+    --sub: #a9a9a9;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Consolas, "DejaVu Sans Mono", Menlo, "SF Mono", monospace;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 24px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { width: 100%; max-width: 420px; }
+
+  .name {
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--text-bright);
+    line-height: 1.9;
+  }
+  .name .caret { color: var(--accent); }
+
+  .quote { font-size: 13.5px; color: var(--muted); }
+
+  .links { margin-top: 28px; font-size: 15px; }
+
+  .link {
+    display: block;
+    text-decoration: none;
+    color: var(--text);
+    padding: 6px 0 6px 4px;
+    line-height: 1.6;
+    transition: color 0.14s ease, padding-left 0.14s ease;
+  }
+  .link .marker {
+    color: var(--accent);
+    display: inline-block;
+    width: 14px;
+    transition: transform 0.14s ease;
+  }
+  .link:hover { color: var(--text-bright); padding-left: 10px; }
+  .link:hover .marker { transform: translateX(1px); }
+  .link:focus-visible { outline: 1px solid var(--accent); outline-offset: 2px; }
+
+  /* social toggle */
+  .social-toggle {
+    cursor: pointer;
+    color: var(--text);
+    padding: 6px 0 6px 4px;
+    line-height: 1.6;
+    user-select: none;
+    transition: color 0.14s ease, padding-left 0.14s ease;
+  }
+  .social-toggle .marker {
+    color: var(--accent);
+    display: inline-block;
+    width: 14px;
+  }
+  .social-toggle .chev { color: var(--muted); font-size: 13px; }
+  .social-toggle:hover { color: var(--text-bright); padding-left: 10px; }
+
+  .social-sub {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.28s ease;
+    padding-left: 20px;
+    font-size: 14px;
+    line-height: 2;
+  }
+  .social-sub.open { max-height: 260px; }
+
+  .sublink {
+    display: block;
+    text-decoration: none;
+    color: var(--sub);
+    transition: color 0.14s ease, padding-left 0.14s ease;
+  }
+  .sublink .dot { color: var(--accent-dim); display: inline-block; width: 12px; }
+  .sublink:hover { color: var(--text-bright); padding-left: 6px; }
+  .sublink:focus-visible { outline: 1px solid var(--accent); outline-offset: 2px; }
+
+  .prompt {
+    margin-top: 26px;
+    font-size: 14px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+  .cursor {
+    display: inline-block;
+    width: 8px;
+    height: 16px;
+    background: var(--accent);
+    margin-left: 4px;
+    animation: blink 1.1s steps(1) infinite;
+  }
+  @keyframes blink { 0%, 50% { opacity: 1; } 50.01%, 100% { opacity: 0; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cursor { animation: none; }
+    .link, .social-toggle, .sublink { transition: none; }
+  }
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="name">zerø<span class="caret">_</span></div>
+    <div class="quote">// information should be free</div>
+
+    <nav class="links">
+
+      <!-- ===== EDIT LINKS BELOW: replace each href="#" with your real URL ===== -->
+
+      <a class="link" href="https://write.as/vornametania/" target="_blank" rel="noopener"><span class="marker">-</span> journal</a>
+
+      <!-- social: click to expand. sub-links are inside .social-sub below -->
+      <div class="social-toggle" onclick="toggleSocial(this)">
+        <span class="marker">-</span> social <span class="chev">+</span>
+      </div>
+      <div class="social-sub" id="social-sub">
+        <a class="sublink" href="https://www.instagram.com/vornametania" target="_blank" rel="noopener"><span class="dot">&middot;</span> instagram</a>
+        <a class="sublink" href="https://www.instagram.com/nachnamesilva" target="_blank" rel="noopener"><span class="dot">&middot;</span> analog instagram</a>
+        <a class="sublink" href="https://discord.com/users/560266172940156929" target="_blank" rel="noopener"><span class="dot">&middot;</span> discord</a>
+        <a class="sublink" href="https://kolektiva.social/@vornametania" target="_blank" rel="noopener"><span class="dot">&middot;</span> mastodon</a>
+        <a class="sublink" href="https://bsky.app/profile/vornametania.bsky.social" target="_blank" rel="noopener"><span class="dot">&middot;</span> bluesky</a>
+      </div>
+
+      <a class="link" href="https://chatgpt.com/g/g-eDYZQet8Y-pocket-tania" target="_blank" rel="noopener"><span class="marker">-</span> pocket-tania</a>
+      <a class="link" href="https://drive.proton.me/urls/SQETQ17FN8#NQjnw28eBYAm" target="_blank" rel="noopener"><span class="marker">-</span> pdf_library</a>
+      <a class="link" href="https://drive.proton.me/urls/X33BANEE8W#2NyptcvjmORW" target="_blank" rel="noopener"><span class="marker">-</span> poetry</a>
+      <a class="link" href="https://cargocollective.com/taniasilva/" target="_blank" rel="noopener"><span class="marker">-</span> analog</a>
+      <a class="link" href="mailto:vornametania@pm.me"><span class="marker">-</span> email</a>
+
+      <!-- ===== END LINKS ===== -->
+
+    </nav>
+
+    <div class="prompt">&gt;<span class="cursor"></span></div>
+  </main>
+
+  <script>
+    function toggleSocial(el) {
+      var sub = document.getElementById("social-sub");
+      var chev = el.querySelector(".chev");
+      var open = sub.classList.toggle("open");
+      chev.textContent = open ? "-" : "+";
+    }
+  </script>
+</body>
+</html>
